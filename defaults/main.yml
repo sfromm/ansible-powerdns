@@ -1,0 +1,31 @@
+---
+powerdns_setuid: pdns
+powerdns_setgid: pdns
+powerdns_recursor_setuid: pdns-recursor
+powerdns_recursor_setgid: pdns-recursor
+powerdns_backends: [ ]
+powerdns_use_recursor: no
+powerdns_use_authoritative: yes
+powerdns_is_master: no
+powerdns_is_slave: no
+powerdns_guardian: yes
+powerdns_local_address:
+  - 0.0.0.0
+  - ::1
+#
+# acls
+powerdns_allow_recursion:
+  - 127.0.0.1
+powerdns_allow_axfr_ips:
+  - 127.0.0.1
+#
+# bind backend
+powerdns_use_bind_backend: yes
+powerdns_bind_config: /etc/pdns/named.conf
+powerdns_bind_directory: /etc/pdns/bind
+powerdns_bind_check_interval: 600
+powerdns_bind_zones: [ ]
+#
+# recursor
+powerdns_any_to_tcp: no
+powerdns_recursor_quiet: yes

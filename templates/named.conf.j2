@@ -1,0 +1,15 @@
+# ansible managed
+options {
+    directory "{{ powerdns_bind_directory }}";
+};
+
+{% for zone in powerdns_bind_zones %}
+zone "{{ zone.name }}" IN {
+  type {{ zone.type }};
+  file "{{ zone.name }}";
+{% if zone.type == 'slave' %}
+  masters { {{ ";".join(zone.masters) }}; };
+{% endif %}
+};
+
+{% endfor %}

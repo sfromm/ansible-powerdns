@@ -1,0 +1,8 @@
+# ansible managed
+setuid={{ powerdns_recursor_setuid }}
+setgid={{ powerdns_recursor_setgid }}
+local-address = {{ ", ".join(powerdns_local_address) }}
+query-local-address6 = {{ ", ".join(ansible_all_ipv6_addresses) }}
+allow-from = {{ ", ".join(powerdns_allow_recursion) }}
+any-to-tcp = {{ powerdns_any_to_tcp|int }}
+quiet = {{ powerdns_recursor_quiet }}

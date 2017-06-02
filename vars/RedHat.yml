@@ -1,0 +1,5 @@
+---
+powerdns_pkgs:
+  - pdns
+  - pdns-tools
+powerdns_recursor_pkg: pdns-recursor

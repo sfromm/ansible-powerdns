@@ -1,0 +1,16 @@
+# ansible managed
+setuid={{ powerdns_setuid }}
+setgid={{ powerdns_setgid }}
+local-address = {{ ", ".join(powerdns_local_address) }}
+allow-recursion = {{ ", ".join(powerdns_allow_recursion) }}
+any-to-tcp = {{ powerdns_any_to_tcp|int }}
+{% if powerdns_is_master %}master=yes{% endif %}
+{% if powerdns_is_slave %}slave=yes{% endif %}
+{% if powerdns_use_bind_backend %}
+#
+launch=bind
+bind-config={{ powerdns_bind_config }}
+bind-check-interval={{ powerdns_bind_check_interval }}
+{% endif %}
+#
+{{ powerdns_extra_pdns_conf }}

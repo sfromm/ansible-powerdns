@@ -1,0 +1,9 @@
+---
+- name: reload pdns
+  service: name=pdns state=reloaded
+
+- name: pdns rediscover
+  command: pdns_control rediscover
+
+- name: reload pdns-recursor
+  service: name=pdns-recursor state=restarted
