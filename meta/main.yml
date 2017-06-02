@@ -24,6 +24,7 @@ galaxy_info:
     - name: EL
       versions:
         - 7
+        - 6
   #
   # Below are all categories currently available. Just as with
   # the platforms above, uncomment those that apply to your role.
