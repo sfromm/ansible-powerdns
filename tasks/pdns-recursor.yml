@@ -1,0 +1,13 @@
+---
+- name: install powerdns recursor
+  package: name={{ powerdns_recursor_pkg }} state=present
+
+- name: template pdns-recursor.conf
+  template:
+    src: recursor.conf.j2
+    dest: "{{ powerdns_recursor_conf_path }}/recursor.conf"
+    backup: yes
+  notify: reload pdns-recursor
+
+- name: enable and start powerdns recursor
+  service: name=pdns-recursor enabled=yes state=started

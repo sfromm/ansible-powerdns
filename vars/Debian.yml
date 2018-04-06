@@ -1,0 +1,8 @@
+---
+powerdns_pkgs:
+  - pdns-backend-bind
+  - pdns-server
+  - pdns-tools
+powerdns_conf_path_default: /etc/powerdns
+powerdns_recursor_pkg: pdns-recursor
+powerdns_recursor_conf_path_default: /etc/powerdns

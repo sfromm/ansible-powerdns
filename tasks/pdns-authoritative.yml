@@ -1,0 +1,29 @@
+---
+- name: install powerdns
+  package: name={{ item }} state=present
+  with_items: "{{ powerdns_pkgs }}"
+
+- name: install powerdns backends
+  package: name={{ item }} state=present
+  with_items: "{{ powerdns_backends }}"
+
+- name: template pdns.conf
+  template: src=pdns.conf.j2 dest={{ powerdns_conf_path }}/pdns.conf backup=yes
+  notify: reload pdns
+
+- name: create powerdns bind directory
+  when: powerdns_use_bind_backend
+  file: >
+    name={{ powerdns_bind_directory }}
+    state=directory
+    owner={{ powerdns_setuid }}
+    group={{ powerdns_setgid }}
+    mode=0751
+
+- name: template named.conf
+  template: src=named.conf.j2 dest={{ powerdns_conf_path }}/named.conf
+  when: powerdns_use_bind_backend
+  notify: reload pdns
+
+- name: enable and start powerdns
+  service: name=pdns enabled=yes state=started

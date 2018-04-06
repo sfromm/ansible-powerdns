@@ -2,37 +2,8 @@
 - name: include os-specific variables
   include_vars: "{{ ansible_os_family }}.yml"
 
-- include: setup-redhat.yml
-  when: ansible_os_family == "RedHat"
-
-- name: template pdns.conf
-  template: src=pdns.conf.j2 dest=/etc/pdns/pdns.conf backup=yes
-  when: powerdns_use_authoritative
-  notify: reload pdns
-
-- name: template pdns-recursor.conf
-  template: src=recursor.conf.j2 dest=/etc/pdns-recursor/recursor.conf backup=yes
+- include: pdns-recursor.yml
   when: powerdns_use_recursor
-  notify: reload pdns-recursor
 
-- name: create powerdns bind directory
-  when: powerdns_use_bind_backend and powerdns_use_authoritative
-  file: >
-    name={{ powerdns_bind_directory }}
-    state=directory
-    owner={{ powerdns_setuid }}
-    group={{ powerdns_setgid }}
-    mode=0751
-
-- name: template named.conf
-  template: src=named.conf.j2 dest=/etc/pdns/named.conf
-  when: powerdns_use_bind_backend and powerdns_use_authoritative
-  notify: reload pdns
-
-- name: enable and start powerdns
-  service: name=pdns enabled=yes state=started
+- include: pdns-authoritative.yml
   when: powerdns_use_authoritative
-
-- name: enable and start powerdns recursor
-  service: name=pdns-recursor enabled=yes state=started
-  when: powerdns_use_recursor

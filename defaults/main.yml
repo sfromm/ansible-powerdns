@@ -9,6 +9,7 @@ powerdns_use_authoritative: yes
 powerdns_is_master: no
 powerdns_is_slave: no
 powerdns_guardian: yes
+powerdns_conf_path: "{{ powerdns_conf_path_default }}"
 powerdns_local_address:
   - 0.0.0.0
   - ::1
@@ -27,5 +28,6 @@ powerdns_bind_check_interval: 600
 powerdns_bind_zones: [ ]
 #
 # recursor
+powerdns_recursor_conf_path: "{{ powerdns_recursor_conf_path_default }}"
 powerdns_any_to_tcp: no
 powerdns_recursor_quiet: yes

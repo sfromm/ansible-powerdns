@@ -2,4 +2,6 @@
 powerdns_pkgs:
   - pdns
   - pdns-tools
+powerdns_conf_path_default: /etc/pdns
 powerdns_recursor_pkg: pdns-recursor
+powerdns_recursor_conf_path_default: /etc/pdns-recursor
