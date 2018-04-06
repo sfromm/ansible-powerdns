@@ -13,7 +13,7 @@ powerdns_conf_path: "{{ powerdns_conf_path_default }}"
 powerdns_extra_pdns_conf: ""
 powerdns_local_address:
   - 0.0.0.0
-powerdns_local_ipv6
+powerdns_local_ipv6:
   - "::"
 #
 # acls
