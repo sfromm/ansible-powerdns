@@ -13,15 +13,18 @@
 
 - name: create powerdns bind directory
   when: powerdns_use_bind_backend
-  file: >
-    name={{ powerdns_bind_directory }}
-    state=directory
-    owner={{ powerdns_setuid }}
-    group={{ powerdns_setgid }}
-    mode=0751
+  file:
+    name: "{{ powerdns_bind_directory }}"
+    state: directory
+    owner: "{{ powerdns_setuid }}"
+    group: "{{ powerdns_setgid }}"
+    mode: "0751"
 
 - name: template named.conf
-  template: src=named.conf.j2 dest={{ powerdns_conf_path }}/named.conf
+  template:
+    src: named.conf.j2
+    dest: "{{ powerdns_conf_path }}/named.conf"
+    backup: yes
   when: powerdns_use_bind_backend
   notify: reload pdns
 
