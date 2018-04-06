@@ -23,8 +23,8 @@ powerdns_allow_axfr_ips:
 #
 # bind backend
 powerdns_use_bind_backend: yes
-powerdns_bind_config: /etc/pdns/named.conf
-powerdns_bind_directory: /etc/pdns/bind
+powerdns_bind_config: "{{ powerdns_conf_path }}/named.conf"
+powerdns_bind_directory: "{{ powerdns_conf_path }}/bind"
 powerdns_bind_check_interval: 600
 powerdns_bind_zones: [ ]
 #
