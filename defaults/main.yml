@@ -10,6 +10,7 @@ powerdns_is_master: no
 powerdns_is_slave: no
 powerdns_guardian: yes
 powerdns_conf_path: "{{ powerdns_conf_path_default }}"
+powerdns_extra_pdns_conf: ""
 powerdns_local_address:
   - 0.0.0.0
   - ::1
