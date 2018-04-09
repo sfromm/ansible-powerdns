@@ -2,8 +2,8 @@
 - name: include os-specific variables
   include_vars: "{{ ansible_os_family }}.yml"
 
-- include: pdns-recursor.yml
+- include_tasks: pdns-recursor.yml
   when: powerdns_use_recursor
 
-- include: pdns-authoritative.yml
+- include_tasks: pdns-authoritative.yml
   when: powerdns_use_authoritative
