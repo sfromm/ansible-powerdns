@@ -21,6 +21,7 @@ powerdns_allow_recursion:
   - 127.0.0.1
 powerdns_allow_axfr_ips:
   - 127.0.0.1
+  - ::1
 #
 # bind backend
 powerdns_use_bind_backend: yes
