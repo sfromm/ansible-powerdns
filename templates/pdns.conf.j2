@@ -6,6 +6,8 @@ local-ipv6 = {{ ", ".join(powerdns_local_ipv6) }}
 allow-axfr-ips =  {{ ", ".join(powerdns_allow_axfr_ips) }}
 allow-recursion = {{ ", ".join(powerdns_allow_recursion) }}
 any-to-tcp = {{ powerdns_any_to_tcp|int }}
+master = {{ powerdns_master|int }}
+slave = {{ powerdns_slave|int }}
 {% if powerdns_is_master %}master=yes{% endif %}
 {% if powerdns_is_slave %}slave=yes{% endif %}
 {% if powerdns_use_bind_backend %}
